@@ -11,6 +11,9 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+   <uses-permission-sdk-23 android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     
 
     <!-- These require runtime permissions on M -->

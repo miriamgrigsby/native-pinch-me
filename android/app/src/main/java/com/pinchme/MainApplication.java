@@ -1,6 +1,7 @@
 package com.pinchme;
 
 import android.app.Application;
+import com.rusel.RCTBluetoothSerial.*;
 
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
@@ -38,6 +39,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       List<ReactPackage> packages = new PackageList(this).getPackages();
       packages.add(new ModuleRegistryAdapter(mModuleRegistryProvider));
+      new RCTBluetoothSerialPackag;
       return packages;
     }
 

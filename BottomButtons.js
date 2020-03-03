@@ -1,27 +1,48 @@
 import React from 'react'
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 
 
-const BottomButtons = ({resetAll}) => {
+const BottomButtons = ({resetAll, onNew, newState, onAdd, onSave}) => {
 
     const handleReset = () => {
         resetAll()
     }
+
+    const handleNew = () => {
+        onNew()
+    }
+
+    const handleAdd = () => {
+        onAdd()
+    }
+
+    const handleSave = () => {
+        onSave()
+        Alert.alert('The Robot action: Whatever is fed in has been saved')
+    }
     return (
         <View style={styles.operationButtons}>
             <TouchableOpacity
-                style={styles.save}
-                title="save"
-                onPress={() => Alert.alert('I hate you')}
+                style={styles.new}
+                title="new"
+                onPress={
+                        newState == false 
+                        ? handleNew
+                        : handleAdd
+                }
             >
-                <Text style={styles.inneText}>Save</Text>
+                {
+                    newState == false 
+                ? <Text style={{fontSize: 25, color: "white"}}>New</Text>
+                : <Text style={{fontSize: 25, color: "white"}}>Add</Text>
+                }
             </TouchableOpacity>
             <TouchableOpacity
-                style={styles.run}
-                title="Run"
-                onPress={() => Alert.alert('I hate you')}
+                style={styles.save}
+                title="save"
+                onPress={handleSave}
             >
-                <Text style={styles.inneText}>Run</Text>
+                <Text style={styles.inneText}>Save</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={styles.reset}
@@ -39,37 +60,40 @@ const styles = StyleSheet.create({
     operationButtons: {
         flex: 1,
         flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "flex-end",
+        marginTop: "90%",
+        marginLeft: "30%",
+        justifyContent: "space-evenly",
         position: "relative",
-        bottom: 0,
+        marginBottom: "-10%",
     },
     save: {
         alignItems: 'center',
         backgroundColor: 'orange',
-        width: '25%',
-        height: "7%",
+        width: '28%',
+        height: "65%",
         justifyContent: "center",
-        marginLeft: "2%",
+        borderWidth: 2
 
     },
-    run: {
+    new: {
         alignItems: 'center',
-        backgroundColor: 'orange',
-        width: '25%',
-        height: "7%",
+        backgroundColor: '#00979d',
+        width: '28%',
+        height: "65%",
         justifyContent: "center",
+        borderWidth: 2
     },
     reset: {
         alignItems: 'center',
-        backgroundColor: 'orange',
-        width: '25%',
-        height: "7%",
+        backgroundColor: '#9d0300',
+        width: '28%',
+        height: "65%",
         justifyContent: "center",
-        marginRight: "4%",
+        borderWidth: 2,
+        
     },
     inneText: {
-        fontSize: 25
+        fontSize: 25,
     }
 })
 

@@ -21,7 +21,7 @@ const Waist = ({waist, changeWaistValue}) => {
             minimumValue={60}
             maximumValue={160}
             step={1}
-            onSlidingComplete={handleValueChange}
+            onValueChange={handleValueChange}
             >
             </Slider>
         </View>
@@ -34,7 +34,7 @@ sliderView: {
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    marginTop: "144.5%",
+    marginTop: "135%",
     marginLeft: "35%",
     width: "60%",
     maxHeight: "25%",

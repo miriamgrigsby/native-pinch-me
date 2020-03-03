@@ -21,7 +21,7 @@ const Elbow = ({elbow, changeElbowValue}) => {
             minimumValue={120}
             maximumValue={160}
             step={1}
-            onSlidingComplete={handleValueChange}
+            onValueChange={handleValueChange}
             >
             ></Slider>
         </View>
@@ -34,7 +34,7 @@ sliderView: {
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    marginTop: "83%",
+    marginTop: "72.5%",
     marginLeft: "35%",
     width: "60%",
     maxHeight: "25%",

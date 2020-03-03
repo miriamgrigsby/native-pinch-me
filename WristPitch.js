@@ -19,9 +19,9 @@ const WristPitch = ({wristPitch, changeWristValue}) => {
             maximumTrackTintColor={"black"}
             value={wristPitch}
             minimumValue={20}
-            maximumValue={110}
+            maximumValue={130}
             step={1}
-            onSlidingComplete={handleValueChange}
+            onValueChange={handleValueChange}
             >
             ></Slider>
         </View>
@@ -34,7 +34,7 @@ sliderView: {
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    marginTop: "54%",
+    marginTop: "46.5%",
     marginLeft: "35%",
     width: "60%",
     maxHeight: "25%",

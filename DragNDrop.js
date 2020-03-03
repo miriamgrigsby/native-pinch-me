@@ -1,0 +1,47 @@
+import React from 'react'
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import axios from 'axios';
+
+const DragNDrop = () => {
+
+    const sendActions = () => {
+        axios.post('http://10.225.128.146:3030/dragNdrop', {Grip: 55, WristPitch: 20, WristRoll: 60, Elbow: 120, Shoulder: 60, Waist: 160})
+        // axios.post('http://10.0.0.110:3030/dragNdrop', {Grip: 55, WristPitch: 20, WristRoll: 60, Elbow: 120, Shoulder: 60, Waist: 160})
+    }
+
+    return (
+        <View >
+            <TouchableOpacity
+                style={styles.drag}
+                title="dragNdrop"
+                onPress={sendActions}
+            >
+                <Text style={styles.innerText}>Drag N' Drop</Text>
+            </TouchableOpacity>
+        </View>
+    )
+}
+
+const styles = StyleSheet.create({
+    drag: {
+        flex: 1,
+        justifyContent: "center",
+        height: "10%",
+        minWidth: "30%",
+        marginRight: "-10%",
+        marginLeft: "12%",
+        borderRightWidth: 2,
+        borderLeftWidth: 3,
+        borderBottomWidth: 3,
+        borderTopWidth: 2,
+        backgroundColor: "black"
+    },
+    innerText: {
+        textAlign: "center",
+        fontSize: 25,
+        fontWeight: "bold",
+        color: "white"
+    }
+})
+
+export default DragNDrop

@@ -18,10 +18,10 @@ const Grip = ({grip, changeGripValue}) => {
             minimumTrackTintColor={"#2a82ba"}
             maximumTrackTintColor={"black"}
             value={grip}
-            minimumValue={55}
+            minimumValue={60}
             maximumValue={150}
             step={1}
-            onSlidingComplete={handleValueChange}
+            onValueChange={handleValueChange}
             ></Slider>
         </View>
     )
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         justifyContent: "space-evenly",
         alignItems: "center",
-        marginTop: "42%",
+        marginTop: "34%",
         marginLeft: "35%",
         width: "60%",
         maxHeight: "25%",

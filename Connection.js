@@ -30,8 +30,8 @@ const Connection = ({ handleConnection, connected, handleDisconnection }) => {
 
                 {
                     connected == false
-                        ? <Text style={{color: "red", fontSize: 18 }}>Disconnected</Text>
-                        : <Text style={{color: "blue", fontSize: 18 }}>Connected</Text>
+                        ? <Text style={{color: "#9d0300", fontSize: 18 }}>Disconnected</Text>
+                        : <Text style={{color: "#00979d", fontSize: 18 }}>Connected</Text>
                 }
                 
             </TouchableOpacity>
@@ -51,29 +51,35 @@ const styles = StyleSheet.create({
     upperButtons: {
         flex: 1,
         flexDirection: "row",
-        marginTop: "-30%",
+        justifyContent: "flex-start",
+        marginTop: "3%",
         width: 300,
-        marginLeft: "-8%"
+        marginLeft: "0.75%",
+        position: "absolute",
+        alignItems: "center"
     },
     connected: {
         alignItems: 'center',
         backgroundColor: 'orange',
         width: '42%',
-        height: "35%",
-        marginRight: "3%"
+        height: "80%",
+        marginRight: "3%",
+        zIndex: 10
     },
     currentStatus: {
         alignItems: 'center',
         width: '42%',
-        height: "35%",
+        height: "80%",
         marginRight: "3%",
+        zIndex: 10
     },
     disconnected: {
         alignItems: 'center',
         backgroundColor: 'orange',
         width: '42%',
-        height: "35%",
-        marginRight: "2%"
+        height: "80%",
+        marginRight: "2%",
+        zIndex: 10
     },
     innerText: {
         fontSize: 18

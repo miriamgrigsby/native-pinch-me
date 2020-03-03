@@ -18,10 +18,10 @@ const Shoulder = ({shoulder, changeShoulderValue}) => {
             minimumTrackTintColor={"#2a82ba"} 
             maximumTrackTintColor={"black"}
             value={shoulder}
-            minimumValue={15}
-            maximumValue={60}
+            minimumValue={0}
+            maximumValue={90}
             step={1}
-            onSlidingComplete={handleValueChange}
+            onValueChange={handleValueChange}
             >
             </Slider>
         </View>
@@ -34,7 +34,7 @@ sliderView: {
     flexDirection: "row",
     justifyContent: "space-evenly",
     alignItems: "center",
-    marginTop: "129%",
+    marginTop: "120%",
     marginLeft: "30%",
     width: "60%",
     maxHeight: "25%",
