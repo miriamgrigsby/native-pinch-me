@@ -5,8 +5,7 @@ import axios from 'axios';
 const DuckDuck = () => {
 
     const sendActions = () => {
-        axios.post('http://10.225.128.146:3030/duck')
-        // axios.post('http://10.0.0.110:3030/duck')
+        axios.post('http://10.225.130.82:3030/duck')
     }
 
     return (
@@ -25,14 +24,15 @@ const DuckDuck = () => {
 const styles = StyleSheet.create({
     duck: {
         flex: 1,
-        justifyContent: "center",
-        minHeight: "10%",
-        minWidth: "30%",
+        maxHeight: "10%",
+        minWidth: "35%",
         borderRightWidth: 2,
         borderLeftWidth: 3,
         borderBottomWidth: 3,
         borderTopWidth: 2,
-        backgroundColor: "black"
+        backgroundColor: "black",
+        justifyContent: "center",
+        marginLeft: "2%"
     },
     innerText: {
         textAlign: "center",

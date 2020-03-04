@@ -5,8 +5,7 @@ import axios from 'axios';
 const DragNDrop = () => {
 
     const sendActions = () => {
-        axios.post('http://10.225.128.146:3030/dragNdrop', {Grip: 55, WristPitch: 20, WristRoll: 60, Elbow: 120, Shoulder: 60, Waist: 160})
-        // axios.post('http://10.0.0.110:3030/dragNdrop', {Grip: 55, WristPitch: 20, WristRoll: 60, Elbow: 120, Shoulder: 60, Waist: 160})
+        axios.post('http://10.225.130.82:3030/dragNdrop', {Grip: 55, WristPitch: 20, WristRoll: 60, Elbow: 120, Shoulder: 60, Waist: 160})
     }
 
     return (
@@ -25,16 +24,16 @@ const DragNDrop = () => {
 const styles = StyleSheet.create({
     drag: {
         flex: 1,
-        justifyContent: "center",
-        height: "10%",
+        maxHeight: "10%",
         minWidth: "30%",
-        marginRight: "-10%",
-        marginLeft: "12%",
+        marginLeft: "-6%",
         borderRightWidth: 2,
         borderLeftWidth: 3,
         borderBottomWidth: 3,
         borderTopWidth: 2,
-        backgroundColor: "black"
+        backgroundColor: "black",
+        justifyContent: "center",
+        marginRight: "10%"
     },
     innerText: {
         textAlign: "center",

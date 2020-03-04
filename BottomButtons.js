@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
 
 
-const BottomButtons = ({resetAll, onNew, newState, onAdd, onSave}) => {
+const BottomButtons = ({resetAll, onNew, newState, onAdd, onSave, botName}) => {
 
     const handleReset = () => {
         resetAll()
@@ -18,7 +18,11 @@ const BottomButtons = ({resetAll, onNew, newState, onAdd, onSave}) => {
 
     const handleSave = () => {
         onSave()
-        Alert.alert('The Robot action: Whatever is fed in has been saved')
+        {botName != "" 
+            ? Alert.alert(`The Robot action: "${botName}" has been saved`)
+            : Alert.alert("Click New to start building a new robot")
+        }
+        
     }
     return (
         <View style={styles.operationButtons}>

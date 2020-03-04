@@ -10,7 +10,7 @@ import Shoulder from './Shoulder.js'
 import Waist from './Waist.js'
 import axios from 'axios'
 
-const nameArray = ["Pinch Me", "Dancer", "Thrower", "Tickle", "Tick-Tock", "Sassy Wave", "Yolo", "Techno", "Rager", "Arctic", "Windy", "Carl's Bad Caverns", "Hot Springs, Hot Rods, Hot Bods", "Squaw", "Tacky", "Lickity Splickty", "Splat", "Cancer Bagel", "The Clap", "Ever-glad I don't Live in Florida", "Channel Your Inner Na-mas-te Islands", "Cascading in Life", "Great Basin", "Ice Ice Baby"]
+const nameArray = ["Pinch Me", "Dancer", "Thrower", "Tickle", "Tick-Tock", "Sassy Wave", "Yolo", "Techno", "Rager", "Arctic", "Windy", "Carl's Bad Caverns", "Hot Springs, Hot Rods, Hot Bods", "Squaw", "Tacky", "Lickity Splickty", "Splat", "Cancer Bagel", "The Clap", "Ever-glad I don't Live in Florida", "Channel Your Inner Na-mas-te Islands", "Cascading in Life", "Great Basin", "Ice Ice Baby", "Impasta Syndrome", "Waist of Time", "Ceasars Scissors", "Gord-geous Pumpkin", "High Steaks", "Take me to your Liter", "ALiens Man *motions hands*", "WELCOME to Mini-soda", "Nice Jester", "Sorry I can't Sia", "Soup-er-ficial", "Always Ben Solo", "Boaring PIG Puns", "Irr-elephant" ]
 
 export default class App extends Component {
 
@@ -22,7 +22,8 @@ export default class App extends Component {
         shoulder: 60,
         waist: 160,
         connected: false,
-        new: false
+        new: false,
+        botName: "",
     }
 
     changeGripValue = (value) => {
@@ -30,8 +31,7 @@ export default class App extends Component {
     }
 
     sendSliderValue = () => {
-        axios.post('http://10.225.128.146:3030/slider', {Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
-        // axios.post('http://10.0.0.110:3030/slider', {Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
+        axios.post('http://10.225.130.82:3030/slider', {Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
     }
 
     changeWristValue = (value) => {
@@ -55,35 +55,33 @@ export default class App extends Component {
     }
 
     handleConnection = () => {
-        axios.post('http://10.225.128.146:3030/bluetoothOn', {Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
-        // axios.post('http://10.0.0.110:3030/bluetoothOn')
+        axios.post('http://10.225.130.82:3030/bluetoothOn', {Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
 
         this.setState({ connected: true })
     }
 
     handleDisconnection = () => {
-        axios.post('http://10.225.128.146:3030/bluetoothOff')
-        // axios.post('http://10.0.0.110:3030/bluetoothOff')
+        axios.post('http://10.225.130.82:3030/bluetoothOff')
         this.setState({ connected: false })
     }
 
     onNew = () => {
         const savedName = nameArray.sort(() => Math.random() - Math.random()).slice(0, 1)
-        axios.post('http://10.0.0.110:3030/newBot', {NewBot: savedName[0], Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
-        console.log(savedName[0])
+        axios.post('http://10.225.130.82:3030/newBot', {NewBot: savedName[0], Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
         this.setState({
-            new: true
+            new: true,
+            botName: savedName[0],
         })
     }
 
     onAdd = () => {
-        console.log("onAdd")
+        axios.post('http://10.225.130.82:3030/newBot', {NewBot: this.state.botName, Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
     }
 
     onSave = () => {
-        console.log("saved bitches")
+        axios.post('http://10.225.130.82:3030/onSave')
         this.setState({
-            new: false
+            new: false,
         })
     }
 
@@ -96,15 +94,17 @@ export default class App extends Component {
             shoulder: 60,
             waist: 160,
             connected: false,
-            new: false
+            new: false,
+            botName: ""
         })
-      
+        axios.get('http://10.225.130.82:3030/onReset')
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <ImageBackground
+                
+                     <ImageBackground
                     style={styles.background}
                     source={require("./robot.png")}
                 >
@@ -127,7 +127,7 @@ export default class App extends Component {
                         changeElbowValue={this.changeElbowValue}
                     />
 
-                    <BottomButtons resetAll={this.resetAll} onNew={this.onNew} newState={this.state.new} onAdd={this.onAdd} onSave={this.onSave}/>
+                    <BottomButtons resetAll={this.resetAll} onNew={this.onNew} newState={this.state.new} onAdd={this.onAdd} onSave={this.onSave} botName={this.state.botName}/>
                     <Shoulder
                         shoulder={this.state.shoulder}
                         changeShoulderValue={this.changeShoulderValue}
@@ -137,6 +137,8 @@ export default class App extends Component {
                         changeWaistValue={this.changeWaistValue}
                     />
                 </ImageBackground>
+                
+
             </View>
         );
     }

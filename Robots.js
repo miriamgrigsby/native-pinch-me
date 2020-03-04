@@ -1,15 +1,44 @@
 import React from 'react'
 import DragNDrop from './DragNDrop'
 import DuckDuck from './DuckDuck'
-import { View, StyleSheet} from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Text, Alert } from 'react-native';
 
-const Robots = () => {
+const Robots = ({ addedBots, showNewRobot, deleteRobot }) => {
+
+    const usersBots = addedBots.map(name => {
+        if (name != "") {
+            return <TouchableOpacity
+                style={styles.newBot}
+                title={name}
+                onPress={() => {handlePress(name)}}
+                onLongPress={() => {handleLongPress(name)}}
+                key={name.id}
+            >
+                <Text style={styles.innerText}>{name}</Text>
+            </TouchableOpacity>
+        }
+    })
+
+    const handlePress = (name) => {
+        showNewRobot(name)
+    }
+
+    const handleLongPress = (name) => {
+        Alert.alert(`${name} Has Been Deleted`)
+        deleteRobot(name)
+    }
+
+
     return (
         <>
             <View style={styles.main}>
                 <DragNDrop />
                 <DuckDuck />
             </View>
+            <View style={styles.new}>
+                {usersBots}
+            </View>
+
         </>
     )
 }
@@ -17,34 +46,36 @@ const Robots = () => {
 const styles = StyleSheet.create({
     main: {
         flex: 1,
-        position: "absolute",
+        flexWrap: "wrap",
         flexDirection: "row",
-        justifyContent: "space-evenly",
-        marginTop: "15%",
-        minWidth: "100%",
-        marginLeft: "-15%",
-        minHeight: "100%",
+        padding: "5%",
     },
-    mainMiddle: {
+    new: {
+        backgroundColor: "white",
         flex: 1,
-        position: "absolute",
+        flexWrap: "wrap",
         flexDirection: "row",
-        justifyContent: "space-evenly",
-        marginTop: "42%",
-        minWidth: "100%",
-        marginLeft: "-15%",
-        maxHeight: "45%"
+        position: "relative",
+        marginTop: "-90%",
+        maxWidth: "66%",
+        marginLeft: "3%",
+        marginRight: "4%",
+        borderWidth: 3,
+        justifyContent: "center"
+
     },
-    mainBottom: {
-        flex: 1,
-        position: "absolute",
-        flexDirection: "row",
-        justifyContent: "space-evenly",
-        marginTop: "70%",
-        minWidth: "100%",
-        marginLeft: "-15%",
-        maxHeight: "28%",
+    newBot: {
+        backgroundColor: "black",
+        width: "43%",
+        padding: "2%",
+        margin: "1%",
+        justifyContent: "space-between"
     },
+    innerText: {
+        color: "white",
+        textAlign: "center",
+        fontSize: 15
+    }
 
 })
 
