@@ -31,7 +31,7 @@ export default class App extends Component {
     }
 
     sendSliderValue = () => {
-        axios.post('http://10.225.130.82:3030/slider', {Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
+        axios.post('http://10.225.134.146:3030/slider', {Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
     }
 
     changeWristValue = (value) => {
@@ -55,19 +55,19 @@ export default class App extends Component {
     }
 
     handleConnection = () => {
-        axios.post('http://10.225.130.82:3030/bluetoothOn', {Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
+        axios.post('http://10.225.134.146:3030/bluetoothOn', {Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
 
         this.setState({ connected: true })
     }
 
     handleDisconnection = () => {
-        axios.post('http://10.225.130.82:3030/bluetoothOff')
+        axios.post('http://10.225.134.146:3030/bluetoothOff')
         this.setState({ connected: false })
     }
 
     onNew = () => {
         const savedName = nameArray.sort(() => Math.random() - Math.random()).slice(0, 1)
-        axios.post('http://10.225.130.82:3030/newBot', {NewBot: savedName[0], Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
+        axios.post('http://10.225.134.146:3030/newBot', {NewBot: savedName[0], Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
         this.setState({
             new: true,
             botName: savedName[0],
@@ -75,11 +75,11 @@ export default class App extends Component {
     }
 
     onAdd = () => {
-        axios.post('http://10.225.130.82:3030/newBot', {NewBot: this.state.botName, Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
+        axios.post('http://10.225.134.146:3030/newBot', {NewBot: this.state.botName, Grip: this.state.grip, WristPitch: this.state.wristPitch, WristRoll: this.state.wristRoll, Elbow: this.state.elbow, Shoulder: this.state.shoulder, Waist: this.state.waist})
     }
 
     onSave = () => {
-        axios.post('http://10.225.130.82:3030/onSave')
+        axios.post('http://10.225.134.146:3030/onSave')
         this.setState({
             new: false,
         })
@@ -97,7 +97,7 @@ export default class App extends Component {
             new: false,
             botName: ""
         })
-        axios.get('http://10.225.130.82:3030/onReset')
+        axios.get('http://10.225.134.146:3030/onReset')
     }
 
     render() {

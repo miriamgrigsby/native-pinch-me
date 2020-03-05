@@ -5,7 +5,7 @@ import axios from 'axios';
 const DuckDuck = () => {
 
     const sendActions = () => {
-        axios.post('http://10.225.130.82:3030/duck')
+        axios.post('http://10.225.134.146:3030/duck')
     }
 
     return (

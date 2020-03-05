@@ -1,6 +1,5 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity, Alert } from 'react-native';
-import axios from 'axios'
 
 
 const Connection = ({ handleConnection, connected, handleDisconnection }) => {
