@@ -5,7 +5,7 @@ import axios from 'axios';
 const DragNDrop = () => {
 
     const sendActions = () => {
-        axios.post('http://10.225.134.146:3030/dragNdrop', {Grip: 55, WristPitch: 20, WristRoll: 60, Elbow: 120, Shoulder: 60, Waist: 160})
+        axios.post('http://10.0.0.110:3030/dragNdrop', {Grip: 55, WristPitch: 20, WristRoll: 60, Elbow: 120, Shoulder: 60, Waist: 160})
     }
 
     return (

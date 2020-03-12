@@ -10,12 +10,12 @@ export default class RobotActions extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://10.225.134.146:3030/findName')
+        axios.get('http://10.0.0.110:3030/findName')
         .then(response => this.setState({addedBots: response.data}))
     }
 
     showNewRobot = (name) => {
-        axios.post('http://10.225.134.146:3030/showNewRobot', {Name: name})
+        axios.post('http://10.0.0.110:3030/showNewRobot', {Name: name})
     }
     
     deleteRobot = (name) => {
@@ -23,7 +23,7 @@ export default class RobotActions extends Component {
             return nameMatch != name
         })
         this.setState({addedBots: newNameArray})
-        axios.post('http://10.225.134.146:3030/deleteRobot', {Name: name})
+        axios.post('http://10.0.0.110:3030/deleteRobot', {Name: name})
     }
 
 
